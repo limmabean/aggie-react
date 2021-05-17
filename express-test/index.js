@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
-
+const exampleReports = require('./example-reports.json');
+const exampleIncidents = require('./example-incidents.json');
+const exampleSources = require('./example-sources.json');
 const app = express();
 
 // Serve the static files from the React app
@@ -8,40 +10,22 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 
 // An api endpoint that returns a short list of items
 app.get('/api/v1/source', (req,res) => {
-  var sources = [{
-    "enabled": true,
-    "unreadErrorCount": 3,
-    "tags": [],
-    "_id": "601cc24b8077511e0ec93e37",
-    "media": "crowdtangle",
-    "nickname": "CT",
-    "user": {
-      "_id": "601cbd2380c78f3e9459fd73",
-      "username": "admin"
-    },
-    "__v": 7,
-    "lastReportDate": "2021-03-14T20:32:11.000Z"
-  },
-    {
-      "enabled": false,
-      "unreadErrorCount": 186,
-      "tags": [
-        "democrats",
-        "bernie",
-        "zebra"
-      ],
-      "_id": "601cbeeb3a16033ebb8b2115",
-      "media": "twitter",
-      "nickname": "Sample",
-      "keywords": "democrats, bernie, zebra",
-      "user": {
-        "_id": "601cbd2380c78f3e9459fd73",
-        "username": "admin"
-      },
-      "__v": 236
-    }];
-  res.json(sources);
+  const sources = exampleSources;
+  res.json(sources)
   console.log('Sent list of sources');
+});
+
+// An api endpoint that returns a short list of items
+app.get('/api/v1/report?page=0', (req,res) => {
+  const reports = exampleReports;
+  res.json(reports);
+  console.log('Sent list of reports');
+});
+
+app.get('/api/v1/incident', (req,res) => {
+  const incidents = exampleIncidents;
+  res.json(incidents);
+  console.log('Sent list of incidents');
 });
 
 // Handles any requests that don't match the ones above

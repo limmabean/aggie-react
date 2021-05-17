@@ -1,0 +1,116 @@
+{
+  "total": 4,
+  "results": [
+    {
+      "tags": [],
+      "smtcTags": [
+        "5f891d7431368212a4fbfa93",
+        "5f99c65447eb603a10d90ed7",
+        "5f99c68147eb603a10d90ed9",
+        "5f99c64b47eb603a10d90ed6",
+        "5f88ca557b25100b68aadccc"
+      ],
+      "status": "new",
+      "veracity": "Confirmed True",
+      "escalated": true,
+      "closed": true,
+      "public": false,
+      "totalReports": 4,
+      "_id": "5f88cd977b25100b68aadcd0",
+      "title": "s",
+      "assignedTo": {
+        "_id": "5ed873b132d1db4c4c3edc7f",
+        "username": "limmabean"
+      },
+      "creator": {
+        "_id": "5ed873b132d1db4c4c3edc7f",
+        "username": "limmabean"
+      },
+      "storedAt": "2020-10-15T22:30:47.598Z",
+      "updatedAt": "2021-05-03T20:02:57.114Z",
+      "idnum": 22,
+      "__v": 10,
+      "locationName": "https://www.facebook.com/groups/199456403537988"
+    },
+    {
+      "tags": [],
+      "smtcTags": [
+        "60905059a310e62ee46bb1ee"
+      ],
+      "status": "new",
+      "veracity": "Confirmed True",
+      "escalated": false,
+      "closed": false,
+      "public": false,
+      "totalReports": 4,
+      "_id": "606b6e443aa8702e64517c32",
+      "title": "awdawd",
+      "assignedTo": null,
+      "creator": {
+        "_id": "5ed873b132d1db4c4c3edc7f",
+        "username": "limmabean"
+      },
+      "storedAt": "2021-04-05T20:08:36.112Z",
+      "updatedAt": "2021-05-03T19:35:02.656Z",
+      "idnum": 26,
+      "__v": 1,
+      "locationName": "c"
+    },
+    {
+      "tags": [],
+      "smtcTags": [
+        "5f99c64b47eb603a10d90ed6",
+        "5f99c65447eb603a10d90ed7",
+        "5f891d7431368212a4fbfa93",
+        "5f99c65b47eb603a10d90ed8",
+        "5f99c68147eb603a10d90ed9",
+        "5f88ca557b25100b68aadccc"
+      ],
+      "status": "new",
+      "veracity": "Confirmed True",
+      "escalated": true,
+      "closed": false,
+      "public": false,
+      "totalReports": 4,
+      "_id": "6021a95fe4ef7183c87d6e3e",
+      "title": "adawddaw",
+      "assignedTo": null,
+      "creator": {
+        "_id": "5ed873b132d1db4c4c3edc7f",
+        "username": "limmabean"
+      },
+      "storedAt": "2021-02-08T21:13:03.087Z",
+      "updatedAt": "2021-04-08T15:33:31.086Z",
+      "idnum": 24,
+      "__v": 12,
+      "notes": "awdawdwd",
+      "locationName": "b"
+    },
+    {
+      "tags": [],
+      "smtcTags": [
+        "5f99c6b047eb603a10d90edc",
+        "5f99c6b947eb603a10d90edd",
+        "5f99cb0347eb603a10d90ede"
+      ],
+      "status": "new",
+      "veracity": "Unconfirmed",
+      "escalated": false,
+      "closed": false,
+      "public": false,
+      "totalReports": 1,
+      "_id": "606238da741e0a5ae8ee44c0",
+      "title": "The Hive Web Dev Standup",
+      "assignedTo": null,
+      "creator": {
+        "_id": "5ed873b132d1db4c4c3edc7f",
+        "username": "limmabean"
+      },
+      "storedAt": "2021-03-29T20:30:18.317Z",
+      "updatedAt": "2021-04-08T15:27:18.847Z",
+      "idnum": 25,
+      "__v": 4,
+      "locationName": "a"
+    }
+  ]
+}

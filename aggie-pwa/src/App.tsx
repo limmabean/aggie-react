@@ -2,19 +2,24 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
-import { Button } from '@material-ui/core';
-import Navbar from "./components/Navbar";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import AggieNavbar from "./components/AggieNavbar";
 import ReportsIndex from './pages/ReportsIndex';
-import IncidentsIndex from './pages/IncidentsIndex';
+import GroupsIndex from './pages/GroupsIndex';
+import axios from "axios";
+
 
 class App extends Component {
+
   render() {
-    const App = () => (
+      const App = () => (
         <div>
-          <Navbar></Navbar>
+          <AggieNavbar></AggieNavbar>
           <Switch>
             <Route exact path='/' component={ReportsIndex}/>
-            <Route path='/incidents' component={IncidentsIndex}/>
+            <Route path='/reports' component={ReportsIndex}/>
+              {/* @ts-ignore*/}
+            <Route path='/incidents' component={GroupsIndex}/>
           </Switch>
         </div>
     )
