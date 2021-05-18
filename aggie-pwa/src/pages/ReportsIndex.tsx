@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Paper, Container } from '@material-ui/core';
 
 interface IProps {
 }
@@ -50,9 +49,7 @@ class ReportsIndex extends Component {
   render() {
     return (
       <div className="">
-        <Container maxWidth="lg">
-            Reports
-        </Container>
+        Reports
       </div>
     );
   }

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Container, Card, Col, Row, Form} from "react-bootstrap";
 import GroupTable from "../components/GroupTable";
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 import StatsBar from '../components/StatsBar';
 import TagsBar from "../components/TagsBar";
 
@@ -76,26 +75,115 @@ class GroupsIndex extends Component<IProps, IState> {
     tags = this.state.tags;
 
     return (
-        <div className="App" >
-
-          <Grid container spacing={2}>
-            <Grid item xs>
-              <TagsBar tags={tags}></TagsBar>
-            </Grid>
-            <Grid item xs={12} sm={12} lg={9}>
-              <Paper>
-                {groups && groups.length > 0 &&
-                <div>
-                  <GroupTable visibleGroups={groups} sources={sources} tags={tags}></GroupTable>
-                </div>
-                }
-              </Paper>
-            </Grid>
-            <Grid item xs>
-              <StatsBar></StatsBar>
-            </Grid>
-          </Grid>
-        </div>
+      <div className="App" >
+        <Container fluid>
+          <Row>
+            <Col>
+              <div className="d-none d-xl-block">
+                <TagsBar tags={tags}></TagsBar>
+              </div>
+            </Col>
+            <Col xl={9}>
+              <Card className="mb-4">
+                <Container fluid>
+                  <Form>
+                    <Form.Row className="pt-2">
+                      <Col>
+                        <Form.Control placeholder="ID" />
+                      </Col>
+                      <Col>
+                        <Form.Control placeholder="Title" />
+                      </Col>
+                      <Col>
+                        <Form.Control placeholder="Tags" />
+                      </Col>
+                      <Col>
+                        <Form.Control placeholder="Location" />
+                      </Col>
+                    </Form.Row>
+                    <Form.Row className="pt-2">
+                      <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                          <Form.Control as="select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect2">
+                          <Form.Control as="select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect3">
+                          <Form.Control as="select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect3">
+                          <Form.Control as="select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect3">
+                          <Form.Control as="select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                      <Col>
+                        <Form.Group controlId="exampleForm.ControlSelect3">
+                          <Form.Control as="select">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                          </Form.Control>
+                        </Form.Group>
+                      </Col>
+                    </Form.Row>
+                  </Form>
+                </Container>
+              </Card>
+              {groups && groups.length > 0 &&
+                <GroupTable visibleGroups={groups} sources={sources} tags={tags}></GroupTable>
+              }
+            </Col>
+            <Col>
+              <div className="d-none d-xl-block">
+                <StatsBar></StatsBar>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     );
   }
 }

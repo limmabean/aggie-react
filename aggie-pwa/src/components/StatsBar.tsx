@@ -28,7 +28,7 @@ const StatsBar = () => {
   }
   return (
       <div>
-        <Jumbotron>
+        <Jumbotron fluid={true} className="bg-white">
           <Container>
             <span>Total Reports</span>
             <h3>{stats.totalReports}</h3>

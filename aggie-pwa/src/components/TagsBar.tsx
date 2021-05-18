@@ -14,7 +14,7 @@ const TagsBar = (props: IProps) => {
 
   return (
       <div>
-        <Jumbotron>
+        <Jumbotron fluid={true}>
           <Container>
             Tags
           </Container>
