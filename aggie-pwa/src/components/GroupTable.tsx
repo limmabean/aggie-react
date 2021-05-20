@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Table from 'react-bootstrap/Table';
-import {Card, Pagination, Button, ButtonToolbar} from "react-bootstrap";
+import {Card, Pagination, Button, ButtonToolbar, Form} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
@@ -14,11 +14,18 @@ export default function GroupTable(props: IProps) {
   const groups = Object.values(props.visibleGroups);
   if (groups.length > 0) {
     const groupRows = groups.map((group: Group) =>
-      <tr>
-        <td></td>
+      <tr key={group._id}>
+        <td>
+          <Form>
+            <Form.Check
+                type="checkbox"
+                id={group._id}
+            />
+          </Form>
+        </td>
         <td>{group.idnum}</td>
         <td>{group.title}</td>
-        <td>{group.locationName}</td>
+        <td className="text-break">{group.locationName}</td>
         {group.notes
             ? <td>{group.notes}</td>
             : <td></td>

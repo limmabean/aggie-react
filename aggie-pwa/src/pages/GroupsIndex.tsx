@@ -43,7 +43,7 @@ class GroupsIndex extends Component<IProps, IState> {
     })
   }
   getGroups = () => {
-    axios.get('/api/v1/incident').then(res => {
+    axios.get('/api/v1/group').then(res => {
       const groups = res.data;
       this.setState({ groups });
     })

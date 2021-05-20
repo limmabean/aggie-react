@@ -6,8 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import AggieNavbar from "./components/AggieNavbar";
 import ReportsIndex from './pages/ReportsIndex';
 import GroupsIndex from './pages/GroupsIndex';
-import axios from "axios";
-
+import SourcesIndex from "./pages/SourcesIndex";
+import UsersIndex from "./pages/UsersIndex";
 
 class App extends Component {
 
@@ -20,6 +20,8 @@ class App extends Component {
             <Route path='/reports' component={ReportsIndex}/>
               {/* @ts-ignore*/}
             <Route path='/incidents' component={GroupsIndex}/>
+            <Route path='/sources' component={SourcesIndex}/>
+            <Route path='/users' component={UsersIndex}/>
           </Switch>
         </div>
     )

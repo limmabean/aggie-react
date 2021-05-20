@@ -10,6 +10,7 @@ interface Source {
     "_id": string,
     "username": string
   },
+  "keywords"?: string,
   "__v": number,
   "lastReportDate": string
 }
