@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Container, Col, Row} from "react-bootstrap";
 import StatsBar from '../components/StatsBar';
-import SourceTable from "../components/SourceTable";
+import SourceTable from "../components/source/SourceTable";
 
 interface IProps {
 }

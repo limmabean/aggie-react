@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Container, Card, Col, Row, Form} from "react-bootstrap";
-import GroupTable from "../components/GroupTable";
+import {Container, Card, Col, Row, Form, Button} from "react-bootstrap";
+import GroupTable from "../components/group/GroupTable";
 import StatsBar from '../components/StatsBar';
-import TagsBar from "../components/TagsBar";
+import TagsBar from "../components/tag/TagsBar";
+import DateRangePicker from "react-bootstrap-daterangepicker";
 
 interface IProps {
 }
@@ -105,7 +106,7 @@ class GroupsIndex extends Component<IProps, IState> {
                       <Col>
                         <Form.Group controlId="exampleForm.ControlSelect1">
                           <Form.Control as="select">
-                            <option>1</option>
+                            <option>Assigned To</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -116,7 +117,7 @@ class GroupsIndex extends Component<IProps, IState> {
                       <Col>
                         <Form.Group controlId="exampleForm.ControlSelect2">
                           <Form.Control as="select">
-                            <option>1</option>
+                            <option>Status</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -127,7 +128,7 @@ class GroupsIndex extends Component<IProps, IState> {
                       <Col>
                         <Form.Group controlId="exampleForm.ControlSelect3">
                           <Form.Control as="select">
-                            <option>1</option>
+                            <option>Veracity</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -138,7 +139,7 @@ class GroupsIndex extends Component<IProps, IState> {
                       <Col>
                         <Form.Group controlId="exampleForm.ControlSelect3">
                           <Form.Control as="select">
-                            <option>1</option>
+                            <option>Escalated</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -149,7 +150,7 @@ class GroupsIndex extends Component<IProps, IState> {
                       <Col>
                         <Form.Group controlId="exampleForm.ControlSelect3">
                           <Form.Control as="select">
-                            <option>1</option>
+                            <option>Created By</option>
                             <option>2</option>
                             <option>3</option>
                             <option>4</option>
@@ -157,16 +158,11 @@ class GroupsIndex extends Component<IProps, IState> {
                           </Form.Control>
                         </Form.Group>
                       </Col>
+                        <DateRangePicker>
+                          <Button>Date Range</Button>
+                        </DateRangePicker>
                       <Col>
-                        <Form.Group controlId="exampleForm.ControlSelect3">
-                          <Form.Control as="select">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </Form.Control>
-                        </Form.Group>
+                        <Button type="submit">Search</Button>
                       </Col>
                     </Form.Row>
                   </Form>

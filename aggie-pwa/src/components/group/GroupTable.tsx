@@ -55,7 +55,14 @@ export default function GroupTable(props: IProps) {
         <Table striped bordered hover responsive size="sm">
           <thead>
           <tr>
-            <th></th>
+            <th>
+              <Form>
+              <Form.Check
+                  type="checkbox"
+                  id={"select-all"}
+              />
+              </Form>
+            </th>
             <th>#</th>
             <th>Title</th>
             <th>Location</th>

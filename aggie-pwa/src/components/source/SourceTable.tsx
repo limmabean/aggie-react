@@ -4,6 +4,7 @@ import {Card, Pagination, Button, ButtonToolbar, Form} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 interface IProps {
   sources: Source[] | [];
@@ -14,7 +15,7 @@ export default function SourceTable(props: IProps) {
     const sourceRows = props.sources.map((source: Source) =>
       <tr key={source._id}>
         <td>{source.media}</td>
-        <td>{source.nickname}</td>
+        <td><Link to={"/source/" + source._id}>{source.nickname}</Link></td>
         {source.user
           ? <td>{source.user.username}</td>
           : <td></td>
@@ -44,11 +45,7 @@ export default function SourceTable(props: IProps) {
           <Card.Header className="d-flex justify-content-between">
             <h3>Sources</h3>
             <ButtonToolbar>
-              <Button variant={"primary"} className="mr-3">
-                <FontAwesomeIcon className="mr-2" icon={faTrash}></FontAwesomeIcon>
-                <span>Delete</span>
-              </Button>
-              <Button variant={"secondary"}>
+              <Button variant={"primary"}>
                 <FontAwesomeIcon className="mr-2" icon={faPlusCircle}></FontAwesomeIcon>
                 <span>Create Source</span></Button>
             </ButtonToolbar>
@@ -79,11 +76,7 @@ export default function SourceTable(props: IProps) {
           <Card.Header className="d-flex justify-content-between">
             <h3>Sources</h3>
             <ButtonToolbar>
-              <Button variant={"primary"} className="mr-3">
-                <FontAwesomeIcon className="mr-2" icon={faTrash}></FontAwesomeIcon>
-                <span>Delete</span>
-              </Button>
-              <Button variant={"secondary"}>
+              <Button variant={"primary"}>
                 <FontAwesomeIcon className="mr-2" icon={faPlusCircle}></FontAwesomeIcon>
                 <span>Create Source</span></Button>
             </ButtonToolbar>

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Nav, Navbar, NavDropdown, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -41,10 +39,9 @@ class AggieNavbar extends Component<IProps, IState> {
         <Nav variant="pills">
           <Link to={'/reports'}>
             <Navbar.Brand>
-              <img
-                  alt=""
-                  src="images/logo-v1.png"
-                  className="d-inline-block align-middle"
+              <Image
+                  alt="Aggie Logo"
+                  src="/images/logo-v1.png"
               />{' '}
             </Navbar.Brand>
           </Link>
@@ -75,16 +72,23 @@ class AggieNavbar extends Component<IProps, IState> {
         </Nav>
         <Nav>
           <Nav.Item>
-            <LinkContainer to={'/reports'}>
-              <Nav.Link eventKey="5">
-                <FontAwesomeIcon className="mr-2" icon={faUser}/>
-                {sessionToken ? (
-                    <span> {sessionToken.username} </span>
-                ) : (
-                    <span> Undefined </span>
-                )}
-              </Nav.Link>
-            </LinkContainer>
+            {sessionToken ? (
+                <LinkContainer to={'/user/' + sessionToken._id}>
+                  <Nav.Link eventKey="5">
+                    <FontAwesomeIcon className="mr-2" icon={faUser}/>
+                    {sessionToken ? (
+                        <span> {sessionToken.username} </span>
+                    ) : (
+                        <span> Undefined </span>
+                    )}
+                  </Nav.Link>
+                </LinkContainer>
+            ) : (
+                <Nav.Link eventKey="5">
+                  <FontAwesomeIcon className="mr-2" icon={faUser}/>
+                  <span> Undefined </span>
+                </Nav.Link>
+            )}
           </Nav.Item>
           <NavDropdown title="Settings" id="nav-dropdown">
             <NavDropdown.Item eventKey="6.1">
@@ -98,10 +102,12 @@ class AggieNavbar extends Component<IProps, IState> {
                 <span>Users</span>
               </NavDropdown.Item>
             </LinkContainer>
-            <NavDropdown.Item eventKey="6.3">
-              <FontAwesomeIcon className="mr-2" icon={faTags}/>
-              <span>Tags</span>
-            </NavDropdown.Item>
+            <LinkContainer to={'/tags'}>
+              <NavDropdown.Item eventKey="6.3">
+                <FontAwesomeIcon className="mr-2" icon={faTags}/>
+                <span>Tags</span>
+              </NavDropdown.Item>
+            </LinkContainer>
             <LinkContainer to={'/sources'}>
               <NavDropdown.Item eventKey="6.4">
                 <FontAwesomeIcon className="mr-2" icon={faCloud}/>

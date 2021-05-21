@@ -1,23 +1,25 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import Table from 'react-bootstrap/Table';
-import {Card, Button, ButtonToolbar, Form} from "react-bootstrap";
+import {Card, Button, ButtonToolbar, Form, Modal} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPlusCircle, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Container } from 'react-bootstrap';
+import UserModal from './UserModal';
 
 interface IProps {
   users: User[] | [];
 }
 
 export default function UserTable(props: IProps) {
+
   if (props.users.length > 0) {
     const userRows = props.users.map((user: User) =>
         <tr key={user._id}>
           <td>{user.username}</td>
           <td>{user.email}</td>
           <td>{user.role}</td>
-          <td></td>
-          <td></td>
+          <td><UserModal user={user}></UserModal></td>
+          <td><FontAwesomeIcon icon={faTrash}></FontAwesomeIcon></td>
         </tr>
     );
 
@@ -27,9 +29,7 @@ export default function UserTable(props: IProps) {
             <Card.Header className="d-flex justify-content-between">
               <h3>Users</h3>
               <ButtonToolbar>
-                <Button variant={"secondary"}>
-                  <FontAwesomeIcon className="mr-2" icon={faPlusCircle}></FontAwesomeIcon>
-                  <span>Create User</span></Button>
+                <UserModal></UserModal>
               </ButtonToolbar>
             </Card.Header>
             <Table striped bordered hover responsive size="sm">

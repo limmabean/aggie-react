@@ -4,7 +4,7 @@ const exampleReports = require('./example-reports.json');
 const exampleGroups = require('./example-groups.json');
 const exampleSources = require('./example-sources.json');
 const exampleSession = require('./example-session.json');
-const exampleUsers = require('./example-session.json');
+const exampleUsers = require('./example-users.json');
 const exampleTags = require('./example-tags.json');
 const app = express();
 
@@ -26,10 +26,24 @@ app.get('/api/v1/user', (req,res) => {
 });
 
 // An api endpoint that returns a short list of items
+app.get('/api/v1/user/60525f6e67764a0cbd905446', (req,res) => {
+  const user = exampleUsers[0];
+  res.json(user)
+  console.log('Sent user details');
+});
+
+// An api endpoint that returns a short list of items
 app.get('/api/v1/source', (req,res) => {
   const sources = exampleSources;
   res.json(sources)
   console.log('Sent list of sources');
+});
+
+// An api endpoint that returns details for one source
+app.get('/api/v1/source/606b31a4bb1d0a5e5138d8bb', (req,res) => {
+  const source = exampleSources[0];
+  res.json(source)
+  console.log('Sent source details');
 });
 
 // An api endpoint that returns a short list of items

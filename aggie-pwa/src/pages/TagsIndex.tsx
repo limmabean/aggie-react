@@ -2,41 +2,40 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Container, Col, Row} from "react-bootstrap";
 import StatsBar from '../components/StatsBar';
-import UserTable from "../components/user/UserTable";
+import TagTable from "../components/tag/TagTable";
 
 interface IProps {
 }
 
 interface IState {
-  users: User[] | [];
+  tags: Tag[] | [];
 }
 
-class UsersIndex extends Component<IProps, IState> {
+class TagsIndex extends Component<IProps, IState> {
   // Initialize the state
   constructor(props: IProps){
     super(props);
     this.state = {
-      users: [],
+      tags: [],
     }
   }
 
   // Fetch the sources on first mount.
   componentDidMount() {
-    this.getUsers();
+    this.getTags();
   }
 
   // Retrieves the list of sources from the Express app
-  getUsers = () => {
-    axios.get('/api/v1/user').then(res => {
-      const users = res.data;
-      this.setState({ users });
-      console.log(users);
+  getTags = () => {
+    axios.get('/api/v1/tag').then(res => {
+      const tags = res.data;
+      this.setState({ tags });
     })
   }
 
   render() {
-    let users: User[] | [];
-    users = this.state.users;
+    let tags: Tag[] | [];
+    tags = this.state.tags;
 
     return (
         <div className="App" >
@@ -45,7 +44,7 @@ class UsersIndex extends Component<IProps, IState> {
               <Col>
               </Col>
               <Col xl={9}>
-                <UserTable users={users}></UserTable>
+                <TagTable tags={tags}></TagTable>
               </Col>
               <Col>
                 <div className="d-none d-xl-block">
@@ -59,4 +58,4 @@ class UsersIndex extends Component<IProps, IState> {
   }
 }
 
-export default UsersIndex;
+export default TagsIndex;

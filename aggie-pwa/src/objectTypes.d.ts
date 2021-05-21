@@ -12,7 +12,7 @@ interface Source {
   },
   "keywords"?: string,
   "__v": number,
-  "lastReportDate": string
+  "lastReportDate"?: string
 }
 
 interface Group {
