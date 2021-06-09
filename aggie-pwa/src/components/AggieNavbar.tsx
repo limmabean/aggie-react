@@ -91,10 +91,12 @@ class AggieNavbar extends Component<IProps, IState> {
             )}
           </Nav.Item>
           <NavDropdown title="Settings" id="nav-dropdown">
-            <NavDropdown.Item eventKey="6.1">
-              <FontAwesomeIcon className="mr-2" icon={faCog}/>
-              <span>Configuration</span>
-            </NavDropdown.Item>
+            <LinkContainer to={'/config'}>
+              <NavDropdown.Item eventKey="6.1">
+                <FontAwesomeIcon className="mr-2" icon={faCog}/>
+                <span>Configuration</span>
+              </NavDropdown.Item>
+            </LinkContainer>
             <NavDropdown.Divider/>
             <LinkContainer to={'/users'}>
               <NavDropdown.Item eventKey="6.2">

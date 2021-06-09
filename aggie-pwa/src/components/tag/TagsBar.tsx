@@ -14,11 +14,14 @@ const TagsBar = (props: IProps) => {
 
   return (
       <div>
-        <Jumbotron fluid={true}>
-          <Container>
-            Tags
-          </Container>
-        </Jumbotron>
+        <Container fluid>
+          <h1>Tags</h1>
+          {props.tags && props.tags.map((tag: Tag)=> {
+            return (
+                <p key={tag._id}>{tag.name}</p>
+            )
+          })}
+        </Container>
       </div>
   );
 }

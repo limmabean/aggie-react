@@ -1,11 +1,18 @@
 const express = require('express');
 const path = require('path');
 const exampleReports = require('./example-reports.json');
+const exampleBatch = require('./example-batch.json');
 const exampleGroups = require('./example-groups.json');
 const exampleSources = require('./example-sources.json');
 const exampleSession = require('./example-session.json');
 const exampleUsers = require('./example-users.json');
 const exampleTags = require('./example-tags.json');
+const exampleTwitterSettings = require('./example-twitterSettings.json');
+const exampleElmoSettings = require('./example-elmoSettings.json');
+const exampleGPlacesSettings = require('./example-GPlacesSettings.json');
+const exampleCrowdTangleSettings = require('./example-CrowdTangleSettings.json');
+const exampleFetching = require('./example-fetching.json');
+const exampleEmailSetting = require('./example-emailSetting.json');
 const app = express();
 
 // Serve the static files from the React app
@@ -53,17 +60,62 @@ app.get('/api/v1/tag', (req,res) => {
   console.log('Sent list of tags');
 });
 
-// An api endpoint that returns a short list of items
-app.get('/api/v1/report?page=0', (req,res) => {
-  const reports = exampleReports;
-  res.json(reports);
-  console.log('Sent list of reports');
-});
-
 app.get('/api/v1/group', (req,res) => {
   const groups = exampleGroups;
   res.json(groups);
   console.log('Sent list of groups');
+});
+
+// An api endpoint that returns a short list of items
+app.get('/api/v1/report', (req,res) => {
+  const reports = exampleReports;
+  res.json(reports);
+  console.log('Sent reports');
+});
+
+// An api endpoint that returns a short list of items
+app.get('/api/v1/report/batch', (req,res) => {
+  const batchReports = exampleBatch;
+  res.json(batchReports);
+  console.log('Sent batch of reports');
+});
+
+/*========================================== API SETTINGS EXAMPLES =============================================*/
+app.get('/api/v1/settings/twitter', (req,res) => {
+  const twitterSettings = exampleTwitterSettings;
+  res.json(twitterSettings);
+  console.log('Sent list of twitter settings');
+});
+
+app.get('/api/v1/settings/elmo', (req,res) => {
+  const elmoSettings = exampleElmoSettings;
+  res.json(elmoSettings);
+  console.log('Sent list of elmo settings');
+});
+
+app.get('/api/v1/settings/gplaces', (req,res) => {
+  const gPlacesSettings = exampleGPlacesSettings;
+  res.json(gPlacesSettings);
+  console.log('Sent list of gPlaces settings');
+});
+
+app.get('/api/v1/settings/crowdtangle', (req,res) => {
+  const crowdTangleSettings = exampleCrowdTangleSettings;
+  res.json(crowdTangleSettings);
+  console.log('Sent list of Crowdtangle settings');
+});
+/*========================================== FETCHING STATUS EXAMPLE =============================================*/
+app.get('/api/v1/settings/fetching', (req,res) => {
+  const fetching = exampleFetching;
+  res.json(fetching);
+  console.log('Sent fetching status');
+});
+
+/*========================================== AGGIE EMAIL EXAMPLE =============================================*/
+app.get('/api/v1/settings/email', (req,res) => {
+  const emailSetting = exampleEmailSetting;
+  res.json(emailSetting);
+  console.log('Sent email settings');
 });
 
 // Handles any requests that don't match the ones above

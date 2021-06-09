@@ -1,3 +1,29 @@
+interface Report {
+  "veracity": string,
+  "tags": string[],
+  "smtcTags": string[],
+  "hasSMTCTags": boolean,
+  "read": boolean,
+  "_sources": string[],
+  "_media": string[],
+  "_sourceNicknames": string[],
+  "escalated": boolean,
+  "_id": string,
+  "_incident"?: string,
+  "authoredAt": string,
+  "fetchedAt": string,
+  "content": string,
+  "author": string,
+  "metadata": any
+  "url": string,
+  "storedAt": string,
+  "__v": number
+}
+
+interface Reports {
+  "total": number,
+  "results": Report[]
+}
 
 interface Source {
   "enabled": boolean,
@@ -16,9 +42,9 @@ interface Source {
 }
 
 interface Group {
-  "tags": Tag[],
+  "tags": string[],
   "id"?: number,
-  "smtcTags": any[],
+  "smtcTags": string[],
   "status": string,
   "veracity": string,
   "escalated": boolean,
@@ -70,4 +96,39 @@ interface Tag {
     "username": string
   },
   "__v": number
+}
+
+interface Setting {
+  "fetching"?: boolean,
+  "email"?: {
+    "from": string,
+    "transport": {
+      "method": string,
+      "options":{
+        "host": string,
+        "port": string,
+        "secure": boolean,
+        "user": string,
+        "pass": string
+      }
+    }
+  },
+  "elmo"?: string,
+  "crowdtangle"?: {
+    "apiToken": string,
+    "baseUrl": string,
+    "pathName": string,
+    "count": number,
+    "sortParam": string,
+    "language": string,
+    "zawgyiProb": number,
+    "detectHateSpeech": boolean
+  },
+  "twitter"?: {
+    "API_key": string,
+    "API_key_secret": string,
+    "access_token": string,
+    "access_token_secret": string,
+  }
+  "setting": string
 }

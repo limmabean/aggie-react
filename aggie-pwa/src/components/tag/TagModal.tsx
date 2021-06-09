@@ -3,17 +3,12 @@ import React, {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlusCircle, faEdit} from "@fortawesome/free-solid-svg-icons";
 
+
 interface IProps {
-  user?: User,
+  tag?: Tag,
 }
 
-const userRoles = ['viewer', 'monitor', 'admin'];
-
-function capitalizeFirstLetter(s: string) {
-  return s && s[0].toUpperCase() + s.slice(1);
-}
-
-export default function UserModal(props: IProps) {
+export default function TagModal(props: IProps) {
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
   const handleClose = () => {
@@ -35,7 +30,7 @@ export default function UserModal(props: IProps) {
     setValidated(true);
   };
 
-  if (props.user) {
+  if (props.tag) {
     return (
         <>
           <a><FontAwesomeIcon onClick={handleShow} icon={faEdit}></FontAwesomeIcon></a>
@@ -47,30 +42,29 @@ export default function UserModal(props: IProps) {
           >
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
               <Modal.Header closeButton>
-                <Modal.Title>Edit user: <a>{props.user.username}</a></Modal.Title>
+                <Modal.Title>Edit tag: <a>{props.tag.name}</a></Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <Container>
-                  <Form.Group controlId="formUsername">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control required type="username" placeholder="Username"
-                                  defaultValue={props.user.username}/>
+                  <Form.Group controlId="createTagForm.formUsername">
+                    <Form.Label>Tag name</Form.Label>
+                    <Form.Control required type="name" placeholder="Tag name" defaultValue={props.tag.name}/>
                   </Form.Group>
-                  <Form.Group controlId="formUserEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control required type="email" placeholder="Enter email"
-                                  defaultValue={props.user.email}/>
-                    <Form.Text className="text-muted">
-                      We'll never share your email with anyone else.
-                    </Form.Text>
+                  <Form.Group controlId="createTagForm.formDescription">
+                    <Form.Label>Tag description</Form.Label>
+                    <Form.Control as="textarea" rows={3} defaultValue={props.tag.description}/>
                   </Form.Group>
-                  <Form.Group controlId="formUserRole">
-                    <Form.Label>User Role</Form.Label>
-                    <Form.Control as="select" defaultValue={props.user.role}>
-                      {userRoles.map((userRole) => {
-                        return <option key={userRole}>{userRole}</option>
-                      })}
-                    </Form.Control>
+                  <Form.Group controlId="createTagForm.formIsCommentTag">
+                    <Form.Check type="checkbox" label="Is this a comment tag?"/>
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label htmlFor="formTagColor">Tag Color</Form.Label>
+                    <Form.Control
+                        type="color"
+                        id="formTagColor"
+                        defaultValue="#563d7c"
+                        title="Choose your tag color."
+                    />
                   </Form.Group>
                 </Container>
               </Modal.Body>
@@ -87,7 +81,7 @@ export default function UserModal(props: IProps) {
         <>
           <Button variant={"primary"} onClick={handleShow}>
             <FontAwesomeIcon className="mr-2" icon={faPlusCircle}></FontAwesomeIcon>
-            <span>Create User</span>
+            <span>Create Tag</span>
           </Button>
           <Modal
               show={show}
@@ -97,28 +91,29 @@ export default function UserModal(props: IProps) {
           >
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
               <Modal.Header closeButton>
-                <Modal.Title>Create User</Modal.Title>
+                <Modal.Title>Create Tag</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <Container>
-                  <Form.Group controlId="formUsername">
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control required type="username" placeholder="Username"/>
+                  <Form.Group controlId="createTagForm.formUsername">
+                    <Form.Label>Tag name</Form.Label>
+                    <Form.Control required type="name" placeholder="Tag name"/>
                   </Form.Group>
-                  <Form.Group controlId="formUserEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control required type="email" placeholder="Enter email"/>
-                    <Form.Text className="text-muted">
-                      We'll never share your email with anyone else.
-                    </Form.Text>
+                  <Form.Group controlId="createTagForm.formDescription">
+                    <Form.Label>Tag description</Form.Label>
+                    <Form.Control as="textarea" rows={3} />
                   </Form.Group>
-                  <Form.Group controlId="formUserRole">
-                    <Form.Label>User Role</Form.Label>
-                    <Form.Control as="select">
-                      {userRoles.map((userRole) => {
-                        return <option key={userRole}>{capitalizeFirstLetter(userRole)}</option>
-                      })}
-                    </Form.Control>
+                  <Form.Group controlId="createTagForm.formIsCommentTag">
+                    <Form.Check type="checkbox" label="Is this a comment tag?" />
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Label htmlFor="formTagColor">Tag Color</Form.Label>
+                    <Form.Control
+                        type="color"
+                        id="formTagColor"
+                        defaultValue="#563d7c"
+                        title="Choose your tag color."
+                    />
                   </Form.Group>
                 </Container>
               </Modal.Body>

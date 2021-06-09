@@ -1,0 +1,13 @@
+{
+  "crowdtangle":{
+    "apiToken":"oIv6ioNR6MwLrm6AqiWKwJ886Cm9vDnTgKMaLm7T",
+    "baseUrl":"api.crowdtangle.com",
+    "pathName":"/posts",
+    "count":100,
+    "sortParam":"date",
+    "language":"en",
+    "zawgyiProb":0.9,
+    "detectHateSpeech":false
+  },
+  "setting":"crowdtangle"
+}

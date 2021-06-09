@@ -63,7 +63,6 @@ class UserProfile extends Component<IProps, IState> {
                             <h2>{user.username}</h2>
                             <h6>{user.role}</h6>
                           </Card.Body>
-
                         </Card>
                     )
                     : <Card>User profile not loaded.</Card>

@@ -3,6 +3,8 @@ import Table from 'react-bootstrap/Table';
 import {Card, Pagination, Button, ButtonToolbar, Form} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
+import EditTagsModal from "../tag/EditTagsModal";
 
 interface IProps {
   visibleGroups: Group[] | [];
@@ -30,12 +32,19 @@ export default function GroupTable(props: IProps) {
             ? <td>{group.notes}</td>
             : <td></td>
         }
-        <td>{group.creator.username}</td>
         {group.assignedTo
-            ? <td>{group.assignedTo.username}</td>
+            ? <td><Link to={"/user/" + group.assignedTo._id}>{group.assignedTo.username}</Link></td>
             : <td></td>
         }
-        <td></td>
+        <td><Link to={"/user/" + group.creator._id}>{group.creator.username}</Link></td>
+        <td>
+          {group.smtcTags.map((smtcTag)=> {
+            return (
+                <p key={smtcTag}>{smtcTag}</p>
+            )
+          })}
+          <EditTagsModal group={group} tags={props.tags}/>
+        </td>
       </tr>
     );
 

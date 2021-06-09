@@ -5,6 +5,8 @@ import GroupTable from "../components/group/GroupTable";
 import StatsBar from '../components/StatsBar';
 import TagsBar from "../components/tag/TagsBar";
 import DateRangePicker from "react-bootstrap-daterangepicker";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
 
 interface IProps {
 }
@@ -162,7 +164,10 @@ class GroupsIndex extends Component<IProps, IState> {
                           <Button>Date Range</Button>
                         </DateRangePicker>
                       <Col>
-                        <Button type="submit">Search</Button>
+                        <Button type="submit">
+                          <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
+                          Search
+                        </Button>
                       </Col>
                     </Form.Row>
                   </Form>
