@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Container, Card, Col, Row, Form, Button} from "react-bootstrap";
+import {Container, Card, Col, Row, Form, Button, FloatingLabel} from "react-bootstrap";
 import GroupTable from "../components/group/GroupTable";
 import StatsBar from '../components/StatsBar';
 import TagsBar from "../components/tag/TagsBar";
@@ -40,28 +40,44 @@ class GroupsIndex extends Component<IProps, IState> {
 
   // Retrieves the list of items from the Express app
   getSources = () => {
-    axios.get('/api/v1/source').then(res => {
-      const sources = res.data;
-      this.setState({ sources });
-    })
+    axios.get('/api/v1/source')
+        .then(res => {
+          const sources = res.data;
+          this.setState({ sources });
+        })
+        .catch(err => {
+          console.error("Server did not return sources. Check your connection to the internet.")
+        })
   }
   getGroups = () => {
-    axios.get('/api/v1/group').then(res => {
-      const groups = res.data;
-      this.setState({ groups });
-    })
-  }
-  getUsers = () => {
-    axios.get('/api/v1/user').then(res => {
-      const users = res.data;
-      this.setState({ users });
-    })
+    axios.get('/api/v1/group')
+        .then(res => {
+          const groups = res.data;
+          this.setState({ groups });
+        })
+        .catch(err => {
+          console.error("Server did not return groups. Check your connection to the internet.")
+        })
   }
   getTags = () => {
-    axios.get('/api/v1/tag').then(res => {
-      const tags = res.data;
-      this.setState({ tags });
-    })
+    axios.get('/api/v1/tag')
+        .then(res => {
+          const tags = res.data;
+          this.setState({ tags });
+        })
+        .catch(err => {
+          console.error("Server did not return tags. Check your connection to the internet.")
+        })
+  }
+  getUsers = () => {
+    axios.get('/api/v1/user')
+        .then(res => {
+          const users = res.data;
+          this.setState({ users });
+        })
+        .catch(err => {
+          console.error("Server did not return users. Check your connection to the internet.")
+        })
   }
 
 
@@ -72,10 +88,12 @@ class GroupsIndex extends Component<IProps, IState> {
     if (this.state.groups) {
       groups = this.state.groups.results;
     } else {
-      groups = null
+      groups = [];
     }
     let tags: Tag[] | null;
     tags = this.state.tags;
+    let users: User[] | null;
+    users = this.state.users;
 
     return (
       <div className="App" >
@@ -89,93 +107,26 @@ class GroupsIndex extends Component<IProps, IState> {
             <Col xl={9}>
               <Card className="mb-4">
                 <Container fluid>
-                  <Form>
-                    <Form.Row className="pt-2">
-                      <Col>
-                        <Form.Control placeholder="ID" />
-                      </Col>
-                      <Col>
-                        <Form.Control placeholder="Title" />
-                      </Col>
-                      <Col>
+                  <Row className="g-2">
+                    <Col md>
+                      <FloatingLabel controlId="floatingInputGrid" label="Keywords">
+                        <Form.Control placeholder="Keywords" />
+                      </FloatingLabel>
+                    </Col>
+                    <Col md>
+                      <FloatingLabel controlId="floatingSelectGrid" label="Works with selects">
+                        <Form.Control placeholder="Author" />
+                      </FloatingLabel>
+                    </Col>
+                    <Col md>
+                      <FloatingLabel controlId="floatingSelectGrid" label="Works with selects">
                         <Form.Control placeholder="Tags" />
-                      </Col>
-                      <Col>
-                        <Form.Control placeholder="Location" />
-                      </Col>
-                    </Form.Row>
-                    <Form.Row className="pt-2">
-                      <Col>
-                        <Form.Group controlId="exampleForm.ControlSelect1">
-                          <Form.Control as="select">
-                            <option>Assigned To</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </Form.Control>
-                        </Form.Group>
-                      </Col>
-                      <Col>
-                        <Form.Group controlId="exampleForm.ControlSelect2">
-                          <Form.Control as="select">
-                            <option>Status</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </Form.Control>
-                        </Form.Group>
-                      </Col>
-                      <Col>
-                        <Form.Group controlId="exampleForm.ControlSelect3">
-                          <Form.Control as="select">
-                            <option>Veracity</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </Form.Control>
-                        </Form.Group>
-                      </Col>
-                      <Col>
-                        <Form.Group controlId="exampleForm.ControlSelect3">
-                          <Form.Control as="select">
-                            <option>Escalated</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </Form.Control>
-                        </Form.Group>
-                      </Col>
-                      <Col>
-                        <Form.Group controlId="exampleForm.ControlSelect3">
-                          <Form.Control as="select">
-                            <option>Created By</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                          </Form.Control>
-                        </Form.Group>
-                      </Col>
-                        <DateRangePicker>
-                          <Button>Date Range</Button>
-                        </DateRangePicker>
-                      <Col>
-                        <Button type="submit">
-                          <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
-                          Search
-                        </Button>
-                      </Col>
-                    </Form.Row>
-                  </Form>
+                      </FloatingLabel>
+                    </Col>
+                  </Row>
                 </Container>
               </Card>
-              {groups && groups.length > 0 &&
-                <GroupTable visibleGroups={groups} sources={sources} tags={tags}></GroupTable>
-              }
+              <GroupTable visibleGroups={groups} sources={sources} tags={tags}></GroupTable>
             </Col>
             <Col>
               <div className="d-none d-xl-block">

@@ -20,8 +20,6 @@ export default function ReportTable(props: IProps) {
     tagsById[tag._id] = tag;
   });
 
-
-
   const reports = Object.values(props.visibleReports);
   if (reports.length > 0) {
     const reportRows = reports.map((report: Report) =>
@@ -41,7 +39,7 @@ export default function ReportTable(props: IProps) {
               ? <td>
                 {report.smtcTags.map((smtcTag) => {
                   return (
-                      <span>
+                      <span key={smtcTag}>
                         {smtcTag}
                       </span>
                   )
@@ -51,7 +49,7 @@ export default function ReportTable(props: IProps) {
           }
           {report._incident
               ? <td>{report._incident}</td>
-              : <td></td>
+              : <td><a>Edit</a></td>
           }
         </tr>
     );
@@ -131,7 +129,7 @@ export default function ReportTable(props: IProps) {
           </thead>
           <tbody>
           <tr>
-            No reports found.
+            <td>No reports found.</td>
           </tr>
           </tbody>
         </Table>

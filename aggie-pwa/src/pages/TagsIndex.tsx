@@ -27,10 +27,14 @@ class TagsIndex extends Component<IProps, IState> {
 
   // Retrieves the list of sources from the Express app
   getTags = () => {
-    axios.get('/api/v1/tag').then(res => {
-      const tags = res.data;
-      this.setState({ tags });
-    })
+    axios.get('/api/v1/tag')
+        .then(res => {
+          const tags = res.data;
+          this.setState({ tags });
+        })
+        .catch(err => {
+          console.error("Server did not return tags. Check your connection to the internet.")
+        })
   }
 
   render() {

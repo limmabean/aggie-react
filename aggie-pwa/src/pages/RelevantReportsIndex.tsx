@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Button, Card, Col, Container, Form, Row, FloatingLabel} from "react-bootstrap";
+import {Button, Card, Col, Container, FloatingLabel, Form, Row} from "react-bootstrap";
 import TagsBar from "../components/tag/TagsBar";
 import DateRangePicker from "react-bootstrap-daterangepicker";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -18,7 +18,7 @@ interface IState {
   reports: Reports | null;
 }
 
-class ReportsIndex extends Component<IProps, IState> {
+class RelevantReportsIndex extends Component<IProps, IState> {
   // Initialize the state
   constructor(props: IProps) {
     super(props);
@@ -95,49 +95,48 @@ class ReportsIndex extends Component<IProps, IState> {
     }
     let tags: Tag[] | null;
     tags = this.state.tags;
-
     return (
-      <div className="">
-        <Container fluid>
-          <Row>
-            <Col>
-              <div className="d-none d-xl-block">
-                <TagsBar tags={tags}></TagsBar>
-              </div>
-            </Col>
-            <Col xl={9}>
-              <Card className="mb-4">
-                <Container fluid>
-                  <Row className="g-2">
-                    <Col md>
-                      <FloatingLabel controlId="floatingInputGrid" label="Keywords">
-                        <Form.Control placeholder="Keywords" />
-                      </FloatingLabel>
-                    </Col>
-                    <Col md>
-                      <FloatingLabel controlId="floatingSelectGrid" label="Works with selects">
-                        <Form.Control placeholder="Author" />
-                      </FloatingLabel>
-                    </Col>
-                    <Col md>
-                      <FloatingLabel controlId="floatingSelectGrid" label="Works with selects">
-                        <Form.Control placeholder="Tags" />
-                      </FloatingLabel>
-                    </Col>
-                  </Row>
-                </Container>
-              </Card>
-              <ReportTable visibleReports={reports} sources={sources} tags={tags} groups={groups}></ReportTable>
-            </Col>
-            <Col>
-              <div className="d-none d-xl-block">
-                <StatsBar></StatsBar>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+        <div className="">
+          <Container fluid>
+            <Row>
+              <Col>
+                <div className="d-none d-xl-block">
+                  <TagsBar tags={tags}></TagsBar>
+                </div>
+              </Col>
+              <Col xl={9}>
+                <Card className="mb-4">
+                  <Container fluid>
+                    <Row className="g-2">
+                      <Col md>
+                        <FloatingLabel controlId="floatingInputGrid" label="Keywords">
+                          <Form.Control placeholder="Keywords" />
+                        </FloatingLabel>
+                      </Col>
+                      <Col md>
+                        <FloatingLabel controlId="floatingSelectGrid" label="Works with selects">
+                          <Form.Control placeholder="Author" />
+                        </FloatingLabel>
+                      </Col>
+                      <Col md>
+                        <FloatingLabel controlId="floatingSelectGrid" label="Works with selects">
+                          <Form.Control placeholder="Tags" />
+                        </FloatingLabel>
+                      </Col>
+                    </Row>
+                  </Container>
+                </Card>
+                <ReportTable visibleReports={reports} sources={sources} tags={tags} groups={groups}></ReportTable>
+              </Col>
+              <Col>
+                <div className="d-none d-xl-block">
+                  <StatsBar></StatsBar>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </div>
     );
   }
 }
-export default ReportsIndex;
+export default RelevantReportsIndex;

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import Table from 'react-bootstrap/Table';
-import {Card, Pagination, Button, ButtonToolbar, Form} from "react-bootstrap";
+import {Card, Pagination, Button, ButtonToolbar, Form, ButtonGroup} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faPlusCircle, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 import EditTagsModal from "../tag/EditTagsModal";
+import ConfirmModal from "../ConfirmModal";
 
 interface IProps {
   visibleGroups: Group[] | [];
@@ -45,20 +46,39 @@ export default function GroupTable(props: IProps) {
           })}
           <EditTagsModal group={group} tags={props.tags}/>
         </td>
+        <td>
+          <Button variant={"link"}>
+            <FontAwesomeIcon icon={faEdit} size="lg"></FontAwesomeIcon>
+          </Button>
+        </td>
+        <td>
+          <Button variant={"link"}>
+            <ConfirmModal type={"delete"} message={"Are you sure you want to delete the group " + group.title}
+                          header={"Delete group: " + group.title}/>
+          </Button>
+        </td>
       </tr>
     );
 
     return (
       <Card>
         <Card.Header>
-          <ButtonToolbar>
-            <Button variant={"primary"} className="mr-3">
-              <FontAwesomeIcon className="mr-2" icon={faTrash}></FontAwesomeIcon>
-              <span>Delete</span>
-            </Button>
-            <Button variant={"secondary"}>
-              <FontAwesomeIcon className="mr-2" icon={faPlusCircle}></FontAwesomeIcon>
-              <span>Create Group</span></Button>
+          <ButtonToolbar
+              className="justify-content-end"
+              aria-label="Toolbar with Button groups"
+          >
+            <ButtonGroup className={"me-2"}>
+              <Button>
+                <FontAwesomeIcon icon={faEdit} className={"me-2"}></FontAwesomeIcon>
+                Edit
+              </Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button>
+                <FontAwesomeIcon icon={faTrash} className={"me-2"}></FontAwesomeIcon>
+                Delete
+              </Button>
+            </ButtonGroup>
           </ButtonToolbar>
         </Card.Header>
         <Table striped bordered hover responsive size="sm">
@@ -79,6 +99,8 @@ export default function GroupTable(props: IProps) {
             <th>Assigned To</th>
             <th>Creation Info</th>
             <th>Tags</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
           </thead>
           <tbody>
@@ -92,13 +114,11 @@ export default function GroupTable(props: IProps) {
               <Pagination.Prev />
               <Pagination.Item>{1}</Pagination.Item>
               <Pagination.Ellipsis />
-
               <Pagination.Item>{10}</Pagination.Item>
               <Pagination.Item>{11}</Pagination.Item>
               <Pagination.Item active>{12}</Pagination.Item>
               <Pagination.Item>{13}</Pagination.Item>
               <Pagination.Item disabled>{14}</Pagination.Item>
-
               <Pagination.Ellipsis />
               <Pagination.Item>{20}</Pagination.Item>
               <Pagination.Next />
@@ -121,7 +141,7 @@ export default function GroupTable(props: IProps) {
           </thead>
           <tbody>
             <tr>
-              No Incidents Found.
+              <td>No Groups Found.</td>
             </tr>
           </tbody>
         </Table>

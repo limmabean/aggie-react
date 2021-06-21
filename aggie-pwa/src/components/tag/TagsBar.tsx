@@ -1,5 +1,5 @@
 import React from "react";
-import {Jumbotron, Container} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 const ENDPOINT = "http://localhost:3000";
 
 interface IProps {

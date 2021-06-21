@@ -25,6 +25,12 @@ interface Reports {
   "results": Report[]
 }
 
+interface SourceEvent {
+  "datetime": string,
+  "type": string,
+  "message": string
+}
+
 interface Source {
   "enabled": boolean,
   "unreadErrorCount": number,
@@ -32,6 +38,7 @@ interface Source {
   "_id": string,
   "media": string,
   "nickname": string,
+  "events"?: SourceEvent[],
   "user": {
     "_id": string,
     "username": string

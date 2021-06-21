@@ -27,10 +27,14 @@ class SourcesIndex extends Component<IProps, IState> {
 
   // Retrieves the list of sources from the Express app
   getSources = () => {
-    axios.get('/api/v1/source').then(res => {
-      const sources = res.data;
-      this.setState({ sources });
-    })
+    axios.get('/api/v1/source')
+        .then(res => {
+          const sources = res.data;
+          this.setState({ sources });
+        })
+        .catch(err => {
+          console.error("Server did not return sources. Check your connection to the internet.")
+        })
   }
 
   render() {

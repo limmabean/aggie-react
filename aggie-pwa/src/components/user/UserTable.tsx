@@ -25,7 +25,7 @@ export default function UserTable(props: IProps) {
         </tr>
     );
   } else {
-    userRows = <td>No Users Found.</td>
+    userRows = <tr><td>No Users Found.</td></tr>
   }
   return (
       <Container fluid>

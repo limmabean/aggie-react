@@ -33,42 +33,66 @@ class Configuration extends Component<IProps, IState> {
 
   // Retrieves the list of items from the Express app
   getAPISettings = () => {
-    axios.get('/api/v1/settings/twitter').then(res => {
-      const settings = [ res.data ];
-      this.setState((state) => {
-        return { APISettings: settings.concat(state.APISettings) };
-      });
-    });
-    axios.get('/api/v1/settings/elmo').then(res => {
-      const settings = [ res.data ];
-      this.setState((state) => {
-        return { APISettings: settings.concat(state.APISettings) };
-      });
-    });
-    axios.get('/api/v1/settings/gplaces').then(res => {
-      const settings = [ res.data ];
-      this.setState((state) => {
-        return { APISettings: settings.concat(state.APISettings) };
-      });
-    });
-    axios.get('/api/v1/settings/crowdtangle').then(res => {
-      const settings = [ res.data ];
-      this.setState((state) => {
-        return { APISettings: settings.concat(state.APISettings) };
-      });
-    });
+    axios.get('/api/v1/settings/twitter')
+        .then(res => {
+          const settings = [ res.data ];
+          this.setState((state) => {
+            return { APISettings: settings.concat(state.APISettings) };
+          });
+        })
+        .catch(err => {
+          console.error("Server did not return twitter settings. Check your connection to the internet.")
+        })
+    axios.get('/api/v1/settings/elmo')
+        .then(res => {
+          const settings = [ res.data ];
+          this.setState((state) => {
+            return { APISettings: settings.concat(state.APISettings) };
+          })
+        })
+        .catch(err => {
+          console.error("Server did not return elmo settings. Check your connection to the internet.")
+        });
+    axios.get('/api/v1/settings/gplaces')
+        .then(res => {
+          const settings = [ res.data ];
+          this.setState((state) => {
+            return { APISettings: settings.concat(state.APISettings) };
+          });
+        })
+        .catch(err => {
+          console.error("Server did not return google places settings. Check your connection to the internet.")
+        });
+    axios.get('/api/v1/settings/crowdtangle')
+        .then(res => {
+          const settings = [ res.data ];
+          this.setState((state) => {
+            return { APISettings: settings.concat(state.APISettings) };
+          });
+        })
+        .catch(err => {
+          console.error("Server did not return crowdtangle settings. Check your connection to the internet.")
+        });
   }
   getFetchStatus = () => {
-    axios.get('/api/v1/settings/fetching').then(res => {
-      const fetchState = res.data;
-      this.setState({ fetchState });
-    })
+    axios.get('/api/v1/settings/fetching')
+        .then(res => {
+          const fetchState = res.data;
+          this.setState({ fetchState });
+        })
+        .catch(err => {
+          console.error("Server did not return fetching status. Check your connection to the internet.")
+        });
   }
   getEmailSettings = () => {
-    axios.get('/api/v1/settings/email').then(res => {
-      const emailSetting = res.data;
-      this.setState({ emailSetting });
-    })
+    axios.get('/api/v1/settings/email')
+        .then(res => {
+          const emailSetting = res.data;
+          this.setState({ emailSetting });
+        })
+        .catch(err => {
+          console.error("Server did not return email settings. Check your connection to the internet.")
+        });
   }
   render() {
     let APISettings: Setting[] | [];

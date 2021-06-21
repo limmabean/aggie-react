@@ -27,11 +27,15 @@ class UsersIndex extends Component<IProps, IState> {
 
   // Retrieves the list of sources from the Express app
   getUsers = () => {
-    axios.get('/api/v1/user').then(res => {
-      const users = res.data;
-      this.setState({ users });
-      console.log(users);
-    })
+    axios.get('/api/v1/user')
+        .then(res => {
+          const users = res.data;
+          this.setState({ users });
+          console.log(users);
+        })
+        .catch(err => {
+          console.error("Server did not get users. Check your connection to the internet.")
+        })
   }
 
   render() {

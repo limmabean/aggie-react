@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
 import socketIOClient from "socket.io-client";
-import {Jumbotron, Container} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 const ENDPOINT = "http://localhost:3000";
 
 const StatsBar = () => {
@@ -28,30 +28,28 @@ const StatsBar = () => {
   }
   return (
       <div>
-        <Jumbotron fluid={true} className="bg-white">
-          <Container>
-            <span>Total Reports</span>
-            <h3>{stats.totalReports}</h3>
-            <span>Reports/Last min</span>
-            <h3>{stats.totalReportsPerMinute}</h3>
-            <span>Unread Reports</span>
-            <h3>{stats.totalReportsUnread}</h3>
-            <span>Tagged Reports</span>
-            <h3>{stats.totalReportsTagged}</h3>
-            <span>Escalated Reports</span>
-            <h3>{stats.totalReportsEscalated}</h3>
-            <span>Groups</span>
-            <h3>{stats.totalGroups}</h3>
-            <span>Escalated Groups</span>
-            <h3>{stats.totalGroupsEscalated}</h3>
-            <div className="stats-timestamp">
-              <small className="text-dark-gray">Last Updated</small>
-              <br/>
-              <i className="fa fa-clock-o text-dark-gray" aria-hidden="true"></i>
-              <small>{stats.timestamp}</small>
-            </div>
-          </Container>
-        </Jumbotron>
+        <Container>
+          <span>Total Reports</span>
+          <h3>{stats.totalReports}</h3>
+          <span>Reports/Last min</span>
+          <h3>{stats.totalReportsPerMinute}</h3>
+          <span>Unread Reports</span>
+          <h3>{stats.totalReportsUnread}</h3>
+          <span>Tagged Reports</span>
+          <h3>{stats.totalReportsTagged}</h3>
+          <span>Escalated Reports</span>
+          <h3>{stats.totalReportsEscalated}</h3>
+          <span>Groups</span>
+          <h3>{stats.totalGroups}</h3>
+          <span>Escalated Groups</span>
+          <h3>{stats.totalGroupsEscalated}</h3>
+          <div className="stats-timestamp">
+            <small className="text-dark-gray">Last Updated</small>
+            <br/>
+            <i className="fa fa-clock-o text-dark-gray" aria-hidden="true"></i>
+            <small>{stats.timestamp}</small>
+          </div>
+        </Container>
       </div>
   );
 }
